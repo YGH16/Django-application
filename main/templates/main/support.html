@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+    <div class="support-box">
+        <h1 class="support-header">Support</h1>
+        <form action= {% url 'support' %} method="post" class="support-form">
+            {% csrf_token %}
+            <input type="text" name="Support-Subject" id="support-subject" placeholder="Subject">
+            <br>
+            <textarea name="Support-Details" id="support-details" cols="30" rows="10" placeholder="Message"></textarea>
+            <br>
+            <button type="submit" class="support-button">Submit Form</button>
+        </form>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert">{{message}}</div>
+        {% endfor %}
+    {% endif %}
+
+
+{% endblock %}

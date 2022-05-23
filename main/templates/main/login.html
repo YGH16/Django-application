@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{appname}} Login</title>
+    <meta name="description" content="Blackwell Global Investments Alternative Investor Portal">
+    <link rel="shortcut icon" type="image/jpg" href="/bgi_static/BG_Blue.svg">
+</head>
+<style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+    body {
+        background-color: rgb(241, 241, 241);
+        padding: 0;
+        margin: 0;
+    }
+    .topbar{
+        max-width: 100%;
+        background-color: #112a4c;
+        height: 65px;
+    }
+    .brand-logo{
+        margin-top: 15px;
+        margin-left: 30px;
+    }
+    .container{
+        text-align: center;
+    }
+    .login-box{
+        margin-top: 200px;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: white;
+        border-radius: 10px;
+        text-align: center;
+    }
+    .brand-name{
+        padding-top: 20px;
+    }
+    .login-form{
+        /* have this change in the media query */
+        padding: 50px 150px;
+    }
+    #username-input, #password-input{
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        border: none;
+        border-bottom: 1px black solid;
+        /* border-radius: 5px; */
+    }
+    .login-button{
+        padding: 10px 50px;
+        border: none;
+        box-shadow: none;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 500;
+        background-color: rgb(249, 140, 30);
+        color: white;
+    }
+    .alert{
+        color: black;
+    }
+    /* Media Query Mobile */
+    @media only screen and (max-width:425px ){
+        .login-box{
+            margin-top: 200px;
+            width: 90%;
+        }
+        .login-form{
+            padding: 80px 20px;
+        }
+
+    }
+    @media only screen and (max-width:1024px ){
+        .login-box{
+            margin-top: 200px;
+            width: 90%;
+        }
+        .login-form{
+            padding: 80px 20px;
+        }
+    }
+    @media only screen and (max-width:1500px ){
+        .login-box{
+            margin-top: 200px;
+            width: 60%;
+        }
+        .login-form{
+            padding: 80px 20px;
+        }
+    }
+    
+    @media only screen and (max-width:768px ){
+        .login-box{
+            margin-top: 200px;
+            width: 90%;
+        }
+        .login-form{
+            padding: 80px 20px;
+        }
+
+    }
+
+</style>
+<body>
+    <div class="topbar">
+        <img class="brand-logo" src={% static 'WHBGI_TOPBAR.png' %} alt="blackwell-global-logo">
+    </div>
+    <div class="container">
+        <div class="login-box">
+            <h1 class="brand-name">Login</h1>
+            <form action={% url 'login' %} method="post" class="login-form">
+                {% csrf_token %}
+                <input type="text" name="Username" id="username-input" placeholder="Username">
+                <br>
+                <br>
+                <br>
+                <input type="password" name="Password" id="password-input" placeholder="Password">
+                <br>
+                <br>
+                <br>
+                <button type="submit" class="login-button">Login <i class="fas fa-sign-in-alt"></i></button>
+            </form>
+            <br>
+            <div class="alert-box">
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert">{{message}}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <br>
+
+        </div>
+    </div>
+    <br>
+
+
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+<div class="reports-box">
+    <h1 class="reports-header">Reports</h1>
+
+    <div class="reports-section">
+
+        <div class="monthly-box">
+
+            <h2 class="reports-section-header">Monthly Reports</h2>
+
+            <div class="monthly-inner">
+
+                {% if reports %}
+                    {% for report in reports %}
+
+                        <div class="pdf-icon-layout">
+                            <a href={{report.pdf.url}} download="statement - {{report.date}}.pdf"><i class="fas fa-file-pdf report-icon"></i> <p>{{report.date}}<p></a>
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+
+            </div>
+
+
+        </div>
+        <div class="quarterly-box">
+
+            <h2 class="reports-section-header" >Quarterly Reports</h2>
+
+            <div class="quarterly-inner">
+
+                {% if quarterlyreports %}
+                    {% for qreport in quarterlyreports %}
+
+                        <div class="pdf-icon-layout">
+                            <a href={{qreport.pdf.url}} download="{{qreport.name}} statement - {{qreport.date}}.pdf"><i class="fas fa-file-pdf report-icon"></i> <p>{{qreport.name}}<p></a>
+                        </div>
+
+                {% endfor %}
+            {% endif %}
+
+            </div>
+
+        
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+{% endblock %}

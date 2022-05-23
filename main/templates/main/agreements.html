@@ -1,0 +1,61 @@
+{% extends 'main/base.html' %}
+{% block content %}
+
+    <div class="agreements-box">
+        <h1 class="agreements-header">Agreements</h1>
+
+        <div class="agreements-section">
+
+            <div class="personal-box">
+                <h2 class="agreement-section-header">Blackwell Documents</h2>
+
+                <div class="personal-inner">
+                    
+                    <div class="pdf-icon-layout">
+                        <a download="Terms of Business" href="https://blackwellglobal.com/wp-content/uploads/2021/12/Terms-of-Business-BHS-EN-V1.131.pdf"><i class="fas fa-file-pdf"></i> <p>Terms of Business<p></a>
+                    </div>
+                    <div class="pdf-icon-layout">
+                        <a download="Risk Warning Notice" href="https://blackwellglobal.com/wp-content/uploads/2021/10/Risk-Warning-Notice-BHS-EN-V1.1.pdf"><i class="fas fa-file-pdf"></i> <p>Risk Warning Notice<p></a>
+                    </div>
+                    <div class="pdf-icon-layout">
+                        <a download="Conflict of Interest" href="https://blackwellglobal.com/wp-content/uploads/2021/10/Conflicts-of-Interest-BHS-EN-V1.1.pdf"><i class="fas fa-file-pdf"></i> <p>Conflict of Interest<p></a>
+                    </div>
+                    <div class="pdf-icon-layout">
+                        <a download="General Regulatory Information" href="https://blackwellglobal.com/wp-content/uploads/2021/11/General-Regulatory-Information-BHS-EN-V1.2.pdf"><i class="fas fa-file-pdf"></i> <p>General Regulatory <br>Information<p></a>
+                    </div>
+                    <div class="pdf-icon-layout">
+                        <a download="Privacy Policy" href="https://blackwellglobal.com/wp-content/uploads/2021/10/Privacy-Policy-BHS-EN-V1.1.pdf"><i class="fas fa-file-pdf"></i> <p>Privacy Policy<p></a>
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <div class="company-box">
+                <h2 class="agreement-section-header">Investor Agreements</h2>
+                <div class="company-inner">
+                	
+                	{% if agreements %}
+                        	{% for agreement in agreements %}
+	                            <div class="pdf-icon-layout">
+	                                <a href={{agreement.pdf.url}} download="{{agreement.agreement_name}}.pdf" ><i class="fas fa-file-pdf"></i><p>{{agreement.agreement_name}}<p></a>
+	                            </div>
+                        	{% endfor %}
+                    	{% endif %}
+                </div>
+
+            
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+{% endblock %}

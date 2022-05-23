@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+    {% if user %}
+        <div class="profile-details">
+            <h1 class="profile-header">Profile</h1>
+            <br>
+
+            <p class="detail-field">{{user.profile.clientid}}</p>
+            <p class="detail-label">Investor ID</p>
+            <br>
+
+            <p class="detail-field">{{user.first_name}}</p>
+            <p class="detail-label">First Name</p>
+
+            <br>
+            <p class="detail-field">{{user.last_name}}</p>
+            <p class="detail-label">Last Name</p>
+
+            <br>
+            <p class="detail-field">{{user.profile.date_of_birth}}</p>
+            <p class="detail-label">Date Of Birth</p>
+
+            <br>
+            <p class="detail-field">{{user.profile.mobile_number}}</p>
+            <p class="detail-label">Phone Number</p>
+
+            <br>
+            <p class="detail-field">{{user.email}}</p>
+            <p class="detail-label">Email Address</p>
+
+        </div>
+    
+    {% else %}
+        <p> This user account is not associated with a profile
+    {% endif %}
+
+
+{% endblock %}
